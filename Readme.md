@@ -4,14 +4,14 @@
 This project auto generates an unique employee-id, email-id and an one Time Password for login in the email. Also it takes an alternate email-id and new pasword from the user as input.
 
 <p align="center">
-    <a href="readmelink"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/Anamika-2000/Email-generator-application/blob/master/Readme.md"><strong>Explore the docs »</strong></a>
 <br>
 <br>
-    <a href="https://vor.quodd.com/internal/approvals/#/login">View Demo</a>
+    <a href="https://github.com/Anamika-2000/Email-generator-application">View Demo</a>
     ·
-    <a href="https://github.com/financeware/support-vmsqss/issues/new">Report Bug</a>
+    <a href="https://github.com/Anamika-2000/Email-generator-application/issues/new">Report Bug</a>
     ·
-    <a href="https://github.com/financeware/support-vmsqss/issues/new">Request Feature</a>
+    <a href="https://github.com/Anamika-2000/Email-generator-application/issues/new">Request Feature</a>
 
 ## Table of content
 - [Usage](#usage)
@@ -19,6 +19,7 @@ This project auto generates an unique employee-id, email-id and an one Time Pass
 - [Pre-Requisites](#pre-requisites)
 - [Authorization](#authorization)
 - [Setup](#setup)
+- [Additional functionality](#additional-functionality)
 
 <p align="right">
  <a href="#email-generator">Back to top</a>
@@ -27,8 +28,13 @@ This project auto generates an unique employee-id, email-id and an one Time Pass
 
 ## Usage
 
- The email application can be used in a large organization to facilitate the creation and management of employee email accounts.
+ The email application can be used in a large organization to facilitate the creation and management of employee email accounts. It generate email address and password.  These credentials can be used by the employee to access their email account and send/receive emails.
+
  
+<p align="right">
+ <a href="#email-generator">Back to top</a>
+</p>
+
 ## Description
 
 The above project is an email application that allows users to create an email account associated with a company name and department name. It is implemented using Java and interacts with a MySQL database for storing information related to the employees.
@@ -43,14 +49,27 @@ The application handles database operations using Java's JDBC API. It loads the 
 
 Overall, this project demonstrates the implementation of an email application with basic employee management functionality, including generating employee IDs, creating email addresses, setting passwords, and storing employee information in a MySQL database.
 
+<p align="right">
+ <a href="#email-generator">Back to top</a>
+</p>
+
 ## Pre-Requisites
 * MySQL
 * Jdk 8
+* Swing
+
+<p align="right">
+ <a href="#email-generator">Back to top</a>
+</p>
 
 ## Authorization
 
 There is no specific authorization for now, but if it is used by an organization then the authorization for the email application will depend on the specific requirements and policies of the company or organization implementing it. Generally, the authorization can be granted to individuals or roles with administrative privileges, such as IT administrators or HR personnel.
 
+
+<p align="right">
+ <a href="#email-generator">Back to top</a>
+</p>
 
 ## Setup
    
@@ -58,32 +77,34 @@ There is no specific authorization for now, but if it is used by an organization
 
 1. Firstly clone the repository
 ```
-git clone ____________
+git clone https://github.com/Anamika-2000/Email-generator-application.git
 ```
 
 2. Import as java project 
 
+### Run the application
+You can use the application in the following way:
 
+1. Run the application: Compile and run the Email_app class in a Java development environment or execute the compiled Java bytecode.
+
+2. Provide employee information: When prompted, enter the employee's first name, last name, and phone number. The application will generate an employee ID based on the provided information.
+
+3. Set up the email account: The application will generate an email address based on the employee's information, including their first name, last name, and department. The generated email address will be displayed on the screen. You have to provide an alternate email address for the employee.
+
+4. One Time Password(OTP): A new one time password is generated corresponding to each email-id to login.
+
+5. Set a new password: Enter a password for the email account when prompted. The password will be displayed on the screen. This password can be used to login afterwards.
 
 <p align="right">
  <a href="#email-generator">Back to top</a>
 </p>
 
-### Run the application
-You can use the application in the following way:
+## Additional functionality
 
-Run the application: Compile and run the Email_app class in a Java development environment or execute the compiled Java bytecode.
+<ul><li>The application provides additional features such as setting the mailbox capacity and changing the password for the email account. These options can be accessed by calling the appropriate methods on the Email object.</li>
+<li>Store the employee record: The application will connect to a MySQL database and store the employee's information, including the employee ID, email address, and password.</li>
+<li>It give option to organization that weather they want to provide the domain name of the company to the employee or not. If they do not want to provide the domain name of the company then the gmail email id is provided to the employee.</ul>
 
-Provide employee information: When prompted, enter the employee's first name, last name, and phone number. The application will generate an employee ID based on the provided information.
-
-Set up the email account: The application will generate an email address based on the employee's information, including their first name, last name, and department. The generated email address will be displayed on the screen. Optionally, you can provide an alternate email address for the employee.
-
-Set a One Time Password(OTP): A new one time password is generated corresponding to each email-id to login.
-
-Set a new password: Enter a password for the email account when prompted. The password will be displayed on the screen. This password can be used to login afterwards.
-
-Store the employee record: The application will connect to a MySQL database and store the employee's information, including the employee ID, email address, and password.
-
-Usage of the email account: Provide the generated email address and password to the employee. They can now use these credentials to access their email account and send/receive emails.
-
-Additional functionality: The application provides additional features such as setting the mailbox capacity and changing the password for the email account. These options can be accessed by calling the appropriate methods on the Email object.
+<p align="right">
+ <a href="#email-generator">Back to top</a>
+</p>
