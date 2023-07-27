@@ -6,12 +6,12 @@ public class FormData {
     private String company;
     private String department;
     private String phoneNumber;
-    private String altEmail; 
+    private String altEmail;
     private String newPassword;
-    private String mailID; // New field for generated mail ID
-    private String employeID; // New field for generated unique ID
-	private boolean useDomain;
-	
+    private String mailID;
+    private String employeID;
+    private boolean useDomain;
+
     public FormData(String firstName, String lastName, String company, String department, String phoneNumber,
             String altEmail, String newPassword, boolean useDomain) {
         this.firstName = firstName;
@@ -21,7 +21,9 @@ public class FormData {
         this.phoneNumber = phoneNumber;
         this.altEmail = altEmail;
         this.newPassword = newPassword;
-        this.useDomain = useDomain; 
+        this.useDomain = useDomain;
+        this.mailID = null;
+        this.employeID = null;
     }
 
     public String getFirstName() {
@@ -96,6 +98,7 @@ public class FormData {
     public void setUniqueID(String employeID) {
         this.employeID = employeID;
     }
+
     public boolean useDomain() {
         return useDomain;
     }

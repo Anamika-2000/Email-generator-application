@@ -5,6 +5,8 @@ plugins {
 }
 
 sourceCompatibility = 1.8
+targetCompatibility = 1.8
+group = "emailapp"
 version = '1.0'
 mainClassName = "emailapp.App"
 

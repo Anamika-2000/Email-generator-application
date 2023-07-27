@@ -128,6 +128,16 @@ public class AppFrame extends JFrame implements ActionListener {
 
         try (MongoClient mongoClient = MongoClients.create(connectionString)) {
             MongoDBManager mongoDBManager = new MongoDBManager(mongoClient, databaseName, collectionName);
+
+            // Generate and set Unique ID
+            String uniqueID = UniqueIDGenerator.generateUniqueID(formData);
+            formData.setUniqueID(uniqueID);
+
+            // Generate and set Email ID
+            String email = EmailGenerator.generateEmail(formData);
+            formData.setMailID(email);
+
+            // Insert form data into the database
             mongoDBManager.insertFormData(formData);
             JOptionPane.showMessageDialog(this, "Form submitted successfully.");
 
@@ -149,19 +159,13 @@ public class AppFrame extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == generateUniqueId) {
             if (FormValidator.validateFields(getFormData())) {
-                String uniqueId = phone_number.getText();
+                String uniqueId = UniqueIDGenerator.generateUniqueID(getFormData());
                 JOptionPane.showMessageDialog(this, "Your Unique ID: " + uniqueId);
             }
         } else if (e.getSource() == generateEmailButton) {
             if (FormValidator.validateFields(getFormData())) {
-                boolean useDomain = getFormData().useDomain();
-                if (useDomain) {
-                    String email = EmailGenerator.generateEmail(getFormData());
-                    JOptionPane.showMessageDialog(this, "Generated Email: " + email);
-                } else {
-                    String email = EmailGenerator.generateEmail(getFormData());
-                    JOptionPane.showMessageDialog(this, "Generated Email: " + email);
-                }
+                String email = EmailGenerator.generateEmail(getFormData());
+                JOptionPane.showMessageDialog(this, "Generated Email: " + email);
             }
         } else if (e.getSource() == generateOTPButton) {
             if (FormValidator.validateFields(getFormData())) {
@@ -177,5 +181,4 @@ public class AppFrame extends JFrame implements ActionListener {
             }
         }
     }
-
 }
