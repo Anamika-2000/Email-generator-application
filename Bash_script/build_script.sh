@@ -9,7 +9,7 @@ else
 fi
 export JAVA_HOME=/tmp/jdk-17.0.8/
 export PATH=$PATH:/tmp/gradle-8.1.1/bin
-cd Email_Managment_Gradle/app
+cd Email-generator-application/app
 gradle build 
 pwd
 cd build
