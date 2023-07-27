@@ -1,0 +1,42 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'eclipse'
+}
+
+sourceCompatibility = 1.8
+version = '1.0'
+mainClassName = "emailapp.App"
+
+repositories {
+    // Use Maven Central for resolving dependencies.
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'ch.qos.logback:logback-classic:1.2.3'
+    implementation 'com.google.guava:guava:31.1-jre'
+    implementation 'org.mongodb:mongodb-driver-sync:4.4.0' 
+    implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.32'
+    implementation group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.32'
+}
+
+
+jar{
+ manifest {
+        attributes 'Implementation-Title': 'Email_app', 'Implementation-Version': version
+    }
+}
+
+task fatJar(type: Jar) {
+    manifest {
+        attributes 'Main-Class': mainClassName
+    }
+    from {
+        configurations.runtimeClasspath.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+    duplicatesStrategy = 'exclude'
+    with jar
+}

@@ -1,14 +1,14 @@
+package emailapp;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.UUID;
 
-public class EmailApp extends JFrame implements ActionListener {
+import com.mongodb.client.*;
+import org.bson.Document;
+
+public class App extends JFrame implements ActionListener {
     private JTextField firstNameField;
     private JTextField lastNameField;
     private JTextField companyField;
@@ -23,7 +23,7 @@ public class EmailApp extends JFrame implements ActionListener {
 
     private boolean otpGenerated = false;
 
-    public EmailApp() {
+    public App() {
         super("Email Generator Application");
 
         // Set frame properties
@@ -205,54 +205,73 @@ public class EmailApp extends JFrame implements ActionListener {
 
     private void submitForm(String altEmail, String newPassword) {
         // Perform form submission logic
+        // Logger logger = Logger.getLogger(App.class.getName());
+        String connectionString = "mongodb+srv://anamika786:anamika2000@cluster0.vwnsldz.mongodb.net/"; // Update with
+                                                                                                        // your MongoDB
+                                                                                                        // server
+                                                                                                        // details
+        String databaseName = "test"; // Replace with your desired database name
+        String collectionName = "Email1"; // Replace with your desired collection name
+        try (MongoClient mongoClient = MongoClients.create(connectionString)) {
+            // Connect to the MongoDB server
+            MongoDatabase database = mongoClient.getDatabase(databaseName);
+            MongoCollection<Document> collection = database.getCollection(collectionName);
+            // Insert a document into the collection
+            // Document document = new Document("name", "John")
+            // .append("age", 30)
+            // .append("email", "john@example.com");
+            // collection.insertOne(document);
+            // System.out.println("Document inserted successfully.");
+            // // Retrieve documents from the collection
+            // FindIterable<Document> documents = collection.find();
 
-        // Update database with the new password
-        updatePasswordInDatabase(newPassword);
+            // try (MongoClient mongoClient =
+            // MongoClients.create("mongodb+srv://anamika786:anamika2000@cluster0.vwnsldz.mongodb.net"))
+            // {
 
-        // Clear the input fields
-        firstNameField.setText("");
-        lastNameField.setText("");
-        companyField.setText("");
-        departmentField.setText("");
-        domainNameYes.setSelected(false);
-        domainNameNo.setSelected(false);
+            // // // Select the database and collection
+            // MongoDatabase database = mongoClient.getDatabase("test");
+            // MongoCollection<Document> collection = database.getCollection("Email1");
 
-        // Clear the alternate email and new password inputs
-        altEmail = "";
-        newPassword = "";
+            // Create a new document to store form data
+            Document formData = new Document();
+            formData.append("firstName", firstNameField.getText());
+            formData.append("lastName", lastNameField.getText());
+            formData.append("company", companyField.getText());
+            formData.append("department", departmentField.getText());
+            formData.append("phoneNumber", phone_number.getText());
+            // formData.append("email", phone_number.getText());
+            formData.append("altEmail", altEmail);
+            formData.append("newPassword", newPassword);
 
-        JOptionPane.showMessageDialog(this, "Form submitted successfully!");
-    }
+            // Insert the document into the collection
+            collection.insertOne(formData);
 
-    private void updatePasswordInDatabase(String newPassword) {
-        String employeeId = generateEmployeeId(); // Replace with your logic to generate employee ID
-        String databaseURL = "jdbc:mysql://localhost:3306/EmailData";
-        String username = "root";
-        String password = "Anamika@2000";
+            JOptionPane.showMessageDialog(this, "Form submitted successfully!");
 
-        try (Connection connection = DriverManager.getConnection(databaseURL, username, password);
-                PreparedStatement statement = connection.prepareStatement(
-                        "UPDATE Dataemail SET password = ? WHERE employee_id = ?")) {
-            statement.setString(1, newPassword);
-            statement.setString(2, employeeId);
+            // Clear the input fields after successful submission
+            firstNameField.setText("");
+            lastNameField.setText("");
+            companyField.setText("");
+            departmentField.setText("");
+            phone_number.setText("");
+            domainNameYes.setSelected(false);
+            domainNameNo.setSelected(false);
 
-            int rowsAffected = statement.executeUpdate();
-            if (rowsAffected > 0) {
-                System.out.println("Password updated successfully.");
-            } else {
-                System.out.println("Failed to update the password.");
+            // Clear the alternate email and new password inputs
+            altEmail = "";
+            newPassword = "";
+            for (Document doc : documents) {
+                System.out.println(doc.toJson());
             }
-        } catch (SQLException e) {
-            System.out.println("An error occurred: " + e.getMessage());
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error while submitting form: " +
+                    e.getMessage());
         }
     }
 
-    private String generateEmployeeId() {
-        // Replace with your logic to generate the employee ID
-        return "EMP123";
-    }
-
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(EmailApp::new);
+        SwingUtilities.invokeLater(App::new);
     }
 }
