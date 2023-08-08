@@ -26,7 +26,8 @@ dependencies {
 
 jar{
  manifest {
-        attributes 'Implementation-Title': 'Email_app', 'Implementation-Version': version
+       attributes 'Main-Class':  'emailapp.App'
+       attributes 'Implementation-Title': mainClassName, 'Implementation-Version': version
     }
 }
 

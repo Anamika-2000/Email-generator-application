@@ -57,4 +57,4 @@ else
     echo gradle file unziped
     export PATH=$PATH:/tmp/gradle-8.1.1/bin
 fi
-echo system for process is done.
+echo set up for process is done .

@@ -20,6 +20,8 @@ This project auto generates an unique employee-id, email-id and an one Time Pass
 - [Authorization](#authorization)
 - [Setup](#setup)
 - [Additional functionality](#additional-functionality)
+- [Available Files](#available-files)
+- [References](#references)
 
 <p align="right">
  <a href="#email-generator">Back to top</a>
@@ -109,15 +111,33 @@ You can use the application in the following way:
 
 ## Additional functionality
 
-<ul><li>The application provides additional features such as setting the mailbox capacity and changing the password for the email account. These options can be accessed by calling the appropriate methods on the Email object.</li>
+<ul><li>The application provides additional features such as  setting the mailbox capacityand changing the password for the email account. These options can be accessed by calling the appropriate methods on the Email object.</li>
 <li>Store the employee record: The application will connect to a Mongodb database and store the employee's information, including the employee ID, email address, and password.</li>
 <li>It also provide unique id to the worker which is the workers phone number and uses it as primary key in data base.</li>
 <li>It give option to organization that weather they want to provide the domain name of the company to the employee or not. If they do not want to provide the domain name of the company then the gmail email id is provided to the employee.</ul>
 
+<p align="right">
+ <a href="#email-generator">Back to top</a>
+</p>
+
 ## Available Files
 This code also have bash scripts and docker file ready . The bash script is for amazonlinux:2.
 
-To run docker file use command `docker build -t file_name .`
+* For Deploying using the bash scripts follow the steps provided in the [Readme](https://github.com/Anamika-2000/Email-generator-application/blob/master/Bash_script/README.md)
+
+* To run docker file use command `docker build -t file_name .`
+
+* To run the application go to build/libs and the double click jar.
+
+* If jar file do not run use command `java -jar jar_name` on cmd to inspect.
+
+<p align="right">
+ <a href="#email-generator">Back to top</a>
+</p>
+
+## References
+
+1. [Gradle_8.1](https://docs.gradle.org/8.1/release-notes.html)
 
 <p align="right">
  <a href="#email-generator">Back to top</a>

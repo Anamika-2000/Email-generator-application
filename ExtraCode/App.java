@@ -1,12 +1,14 @@
 package emailapp;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import com.mongodb.client.*;
+import javax.swing.*;
+
 import org.bson.Document;
+
+import com.mongodb.client.*;
 
 public class App extends JFrame implements ActionListener {
     private JTextField firstNameField;
