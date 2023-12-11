@@ -123,7 +123,7 @@ You can use the application in the following way:
 ## Available Files
 This code also have bash scripts and docker file ready . The bash script is for amazonlinux:2.
 
-* For Deploying using the bash scripts follow the steps provided in the [Readme](https://github.com/Anamika-2000/Email-generator-application/blob/master/Bash_script/README.md)
+* For Deploying using the bash scripts follow the steps provided in the [Readme](/Bash_script/README)
 
 * To run docker file use command `docker build -t file_name .`
 
